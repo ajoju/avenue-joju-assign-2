@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript strings</title>
+    
+    <style>
+
+        /* Styling the whole body */
+        body{
+            background-color: #5d8f87;            
+        }
+
+    </style>
+    
+</head>
+<body>
+    
+    <!-- First property : String Length -->
+    <h1> If you want to know the length of name Avenue, look below </h1>
+
+    <div id="stringlength"></div>
+
+    <script type="text/javascript">
+
+        let x = "Avenue"; // declaring a constant variable  x
+        document.write(x); // print x
+        document.getElementById("stringlength").innerHTML = x.length // returns the total length of string
+        
+    </script>
+    
+    <hr>
+
+    <!--Second Property : Upper and Lower Case Conversion -->
+    <h1> These are the options to convert into upper and lower cases </h1>
+
+    <button onclick="uppercase()"> Convert to uppercase! </button> <!--  Button to convert to uppercase  -->
+    <p id="UpperCase"> My name is Avenue Joju </p> 
+
+    <button onclick="lowercase()"> Convert to lowercase! </button> <!--  Button to convert to lowercase  -->
+    <p id="LowerCase"> My name is Avenue Joju </p>
+
+    <script>
+        function uppercase() {
+            let sentence1 = document.getElementById("UpperCase").innerHTML; // declaring a variable assigning it the value which is element from the HTML with ID "uppercase" 
+            document.getElementById("UpperCase").innerHTML = sentence1.toUpperCase(); // Converting it to uppercase
+        }
+
+        function lowercase() {
+            let sentence2 = document.getElementById("LowerCase").innerHTML; // declaring a variable assigning it the value which is element from the HTML with ID "lowercase"
+            document.getElementById("LowerCase").innerHTML = sentence2.toLowerCase(); // Converting it to lowercase
+        }
+    </script>
+
+    <hr>
+     
+    <!--Third Property : String Content Replacement -->
+    <h1> Replacing String  </h1>
+    <button onclick="replacestring()"> Press here </button> <!-- button to perform the function -->
+    <p id="replacestring"> You are very good </p> 
+
+    <script>
+        function replacestring() {
+            let k = document.getElementById("replacestring").innerHTML; // declaring variable k
+            document.getElementById("replacestring").innerHTML = k.replace("good", "bad"); // changing the word 'good' with 'bad'
+        }
+    </script>
+
+    <hr>
+</body>
+</html>
