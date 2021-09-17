@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!--Internal CSS-->
+    <style>
+
+        /* Styling the whole body */
+        body{
+            background-color: #5d8f87;            
+        }
+
+    </style>
+    
+    <!--Vue link-->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"> </script>
+
+</head>
+<body>
+    <!-- Heading 1  -->
+    <h1> Task 1: Local and Global Registration </h1>
+        
+    <!-- Local Registration -->
+    <div id="localmatter"> </div>
+
+    <br> 
+
+    <!-- Global Registration -->
+    <div id="globalmatter"> </div>
+
+    <!-- JavaScript -->
+    <script>
+        // localmatter
+        const LocalRegistration = {
+            // Setting the template 
+            template:'<div><h3>${message}</h3> <button @click="test"> Click me! </button></div>', 
+            // these will specify the point where the split must occur
+            delimiters: ['${','}'], 
+            // Function to return the message 
+            data: function() { 
+                
+                return {
+                    message: 'Now it is testing local registration'
+                }
+            },
+            methods: {
+                test: function(){ // Function to alert the user to indicate that the local registration works
+                    alert('your local registration is succesful and works if you see this message');
+                }
+            }
+        };
+        
+        let local = new Vue({ 
+            el:'#localmatter',
+            components: { 
+                // Using in an instance
+                'local-registration': LocalRegistration
+            },
+            data: {
+                num: 1
+            },
+            template: `<local-registration/>` // local-registration templete is used
+        });
+
+        // globalmatter
+        Vue.component('global-registration', {
+            // Setting the template
+            template: '<div><h3>${message}</h3> <button @click="test"> Click me! </button></div>',  
+            delimiters: ['${','}'], // Delimiters specify the point where the split must occur
+            data: function() { 
+                return { // Function to return the message 
+                    message: 'Testing Global Registration'
+                }
+            },
+            methods: {
+                test: function() { // Function to alert the user to indicate that the global registration works
+                    alert('your global registration is succesful and works if you see this message');
+                }
+            }
+        })
+
+        let global = new Vue({
+            el:'#globalmatter',
+            template: `<global-registration/>` // Uses template from global-registration
+        });
+    </script>
+</body>
+</html>

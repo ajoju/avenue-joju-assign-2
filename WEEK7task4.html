@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!--Internal CSS-->
+    <style>
+
+        /* Styling the whole body */
+        body{
+            background-color: #5d8f87;            
+        }
+
+    </style>
+
+    <!-- Vue link -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"> </script>
+</head>
+
+<body>
+    <!-- Activity 4: Vue Slots (coding Named Slots) -->
+        <!-- Declerative rendering to the DOM -->
+        <div id="activity4"> 
+            <h1 class="task"> {{ task }} </h1>
+
+            <!-- rendering test from the parent -->
+            <!-- it allows the parent component to manage the child component's content -->
+
+            <vue-slots>
+                <!-- progressing by adding the slot component make it to render any type of custom component -->
+                <!-- The element will remain on top even if it is placed at the bottom -->
+
+                <p slot="first"> hi, i am from first slot </p>
+
+                <!-- The information is captured and presented at the bottom -->
+
+                <p slot="second"> hi, i am from second slot </p>
+                <p> hi, i am the parent of child </p>
+
+            </vue-slots>
+
+            <!--to render testing from the child -->
+            <vue-slots> </vue-slots>
+        </div>
+
+        <!-- JavaScript --> 
+        <script type="text/x-template" id="vue-tasks"> 
+            <div>
+                <!-- This is where elements with the slot="first" attribute will end up --> 
+                <slot name="firstOne"> </slot>
+
+                <!-- A slot tag without a name serves as a catch-all for any content that lacks the slot="" attribute -->
+                <slot> 
+                    <!-- Override -->
+                    <p> Greetings from the child </p>
+                </slot> 
+
+                
+                <slot name="secondOne"> </slot>
+            </div>
+        </script>
+
+        <script>
+            Vue.component('vue-tasks', {
+                // here we don't directly write the template
+                template: '#vue-tasks', 
+                data() {
+                    return {
+                        childTitle: 'Hello'
+                    }
+                },
+                props: {
+                    type: String,
+                    required: true
+                }
+            });
+
+            new Vue({
+                el: '#activity4',
+                data() {
+                    return {
+                        task: 'Task 4: Vue Slots (coding Named Slots)',
+                    }
+                }
+            });
+        </script>
+</body>
+</html>

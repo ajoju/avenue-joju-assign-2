@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!--Internal CSS-->
+    <style>
+
+        /* Styling the whole body */
+        body{
+            background-color: #5d8f87;            
+        }
+
+    </style>
+  
+    <!--Vue link-->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"> </script>
+
+</head>
+<body>
+    <!--heading-->
+        <h1> Task 2: Coding Props </h1>
+        <div id="props"> 
+            <child :text="text1"></child> <!-- binding text with text1 which is defined in Vue -->
+            <child :text="text2"></child> <!-- binding text with text2 which is defined in Vue -->
+        </div>
+
+        <!-- JavaScript -->
+        <script>
+            Vue.component('child', {
+                props: { // Object
+                    text: {
+                        // Properties
+                        type: String, 
+                        required: true 
+                    }
+                },
+                template: `<div>{{ text }}</div>`
+            });
+
+            // creating a Vue instance
+            new Vue({ 
+                // Passing the object
+                el: '#props', 
+                data() {
+                    return { // Defining message1 and message2
+                        text1: "Coding Props testing",
+                        text2: "If you see this message, your coding props works"
+                    }
+                }
+            });
+        </script>
+</body>
+</html>

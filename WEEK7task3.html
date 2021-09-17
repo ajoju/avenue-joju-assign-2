@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!--Internal CSS-->
+    <style>
+
+        /* Styling the whole body */
+        body{
+            background-color: #5d8f87;            
+        }
+
+    </style>
+
+    <!-- Different Vue package -->
+    <script src="https://unpkg.com/vue@next"></script>
+
+</head>
+<body>
+    <!-- Heading -->
+    <h1> Task 3: Custom Events </h1>
+    <div id="custom-events">
+        <!-- binding the component -->
+        <p> First name: {{ firstName }} </p>
+        <p> Last name: {{ lastName }} </p>
+        <p> Address: {{ Address }} </p>
+
+        <!--passing the info to the props -->
+        <user-information
+            v-model:first-name="firstName"
+            v-model:last-name="lastName"
+            v-model:home-address="Address"
+        ></user-information>
+    </div>
+
+    <script>
+        const UserInformation = {
+            props: {
+                firstName: String,
+                lastName: String,
+                Address: String
+            },
+            template: // template to show information from the user
+            ` 
+                <input 
+                type="text"
+                :value="firstName"
+                placeholder="First Name"
+                @input="$emit('update:firstName', $event.target.value)">
+                <input
+                type="text"
+                :value="lastName"
+                placeholder="Last Name"
+                @input="$emit('update:lastName', $event.target.value)">
+                <input
+                type="text"
+                :value="Address"
+                placeholder="Home Address"
+                @input="$emit('update:Address', $event.target.value)">
+            `
+            // $emit is used to send data back to the parent component from the child component.
+            // The name of the transmitted event must be the same as the name of the event being listened.
+        };
+
+        const CustomEvents = {
+            components: {
+                UserInformation
+            },
+            data() {
+                return { 
+                    // Setting up the default values
+                    firstName: 'Avenue',
+                    lastName: 'Joju',
+                    Address: ' Address : street 13, gandhigram'
+                };
+            },
+        };
+
+        Vue.createApp(CustomEvents).mount('#custom-events')
+    </script>
+</body>
+</html>
