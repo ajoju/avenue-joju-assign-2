@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Number and Array</title>
+    <style>
+        body{
+            background-color: #5d8f87;
+        }
+    </style>
+</head>
+<body>
+    <!-- First: Number methods -->
+    <h1> Number methods </h1>
+
+    <!-- toString() method -->
+    <h2> The toString() method </h2>
+    <!-- Outputs -->
+    <p id="fromvariable"></p>
+    <p id="fromliteral"></p>
+    <p id="equation"></p>
+
+    <!-- JavaScript -->
+    <script type="text/javascript">
+        let k = 1008; // Declaring a variable x and assigning 251 as its value
+        document.getElementById("fromvariable").innerHTML = "k = " + k.toString(); // Returns 251 from variable k
+        document.getElementById("fromliteral").innerHTML = "Returns 1008 from literal 1008 --> " + (1008).toString(); // Returns 251 from literal 251
+        document.getElementById("equation").innerHTML = "1000 + 8 = " + (1000 + 8).toString(); // Returns 1008 from 1000 + 8
+    </script>
+
+    <hr>
+
+    <!-- Second :Array methods -->
+    <h1> Array methods </h1>
+
+    <!-- The join() method -->
+    <h2> The join() method </h2>
+    <!-- Outputs -->
+    <p id="add"></p>
+    <p id="sortout"></p>
+
+    <script type="text/javascript"> 
+        var campuses = ["Deakin Campuses", "Geelong", "Burwood"]; // Declare an array
+        document.getElementById("add").innerHTML = campuses.add(", "); // Displaying it on the browser
+        document.getElementById("sortout").innerHTML = campuses.sortout()  // Sorted campuses according to alphabetic order are displayed on the terminal 
+    </script>
+
+    <!-- Popping -->
+    <h2> Popping the last element </h2> <!-- Removes/pop the last element from array -->
+    <!-- Outputs -->
+    <p id="pop"></p>
+
+    <script type="text/javascript">
+        campuses.pop(); // Removes the last element from the "months" array
+        document.getElementById("pop").innerHTML = campuses;
+    </script>
+
+
+    <!-- Pushing -->
+    <h2> Pushing </h2> <!-- Adds a new element to an array at the end -->
+    <!-- Outputs -->
+    <button onclick="addMonth()"> Click me! </button> <!-- Button to perform the add campus function -->
+    <p id="push"></p> 
+
+    <script type="text/javascript">
+        document.getElementById("push").innerHTML = campuses;
+
+        function addMonth() { // Function to add Waterfromt to the array
+            campuses.push("WaterFront"); // Adds Waterfrontto the "campuses" array at the end
+            document.getElementById("push").innerHTML = campuses;
+        }
+    </script>
+</body>
+</html>

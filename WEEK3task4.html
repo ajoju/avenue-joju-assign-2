@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="task4.css" rel="stylesheet" type="text/css">
+    <script>
+        // Alerts 
+        function Lecture() {
+            alert("this is a regular page");
+        }
+
+        function Seminar() {
+            alert("this is the page of special offers");
+        }
+
+        // Geolocation
+        var k = document.getElementById("location");
+
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            }
+            else {
+                k.innerHTML = "Geolocation is not supported by this browser.";
+            }
+        }
+
+        function showPosition(position) {
+            var coord = position.coords.latitude + "," + position.coords.longitude;
+
+            var url = "https://maps.googleapis.com/maps/api/staticmap?center="+coord+"&zoom=14&size=400x300&sensor=false&key=YOUR_KEY";
+            
+            document.getElementById("mapholder").innerHTML = "<img src='"+url+"'>";
+        }
+
+    </script>
+</head>
+<body>
+    <h1> Welcome back to the burger Store</h1>
+    <div class="rows">
+        <div class="column left" style="background-color: green">
+            <h2> Today is</h2>
+            <br>
+            <button type="button" onclick="document.getElementById('demo').innerHTML = Date()"> Press here </button>
+            <p id="demo"> </p>
+        </div>
+        <div class="column right">
+            <h2>Regular Schedule </h2>
+            <table border="7"  align="center">
+                <tr> 
+                    <td> Monday </td>
+                    <td> Tuesday </td>
+                    <td> Wednesday </td>
+                    <td> Thursday </td>
+                    <td> Friday </td>
+                </tr>
+                <tr>
+                    <td onclick="Regular()"> 10:00 - 21:00 </td>
+                    <td onclick="Regular()"> 10:00 - 21:00 </td>
+                    <td onclick="Regular()"> 10:00 - 21:00 </td>
+                    <td onclick="specialOffers()"> 12:00 - 21:30 </td>
+                    <td style="background-color:yellow;"> </td>
+                </tr>
+                <tr>
+                    <td style="background-color: yellow;"></td>
+                    <td onclick="specialOffers()"> 12:00 - 14:50  </td>                   
+                    <td onclick="specialOffers()"> 15:00 - 17:00  </td>
+                    <td onclick="specialOffers()"> 14:00 - 16:00  </td>
+                    <td style="background-color: yellow"> </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- Creating a row for a whitespace -->
+    <div class="rows">
+        <div class="column" style="width: 100%; height: 10px;"> </div>
+    </div>
+
+    <!-- Creating a row -->
+    <div class="rows">
+
+        <!-- Creating a column -->
+        <div class="column" style="background-color: #8e605d; width: 100%; height: fit-content;">
+            <h2> Remember </h2>
+            <ul> <!-- Unordered list -->
+                <!-- The bulletpoints -->
+                <li> Dont take food items from outside inside the store </li>
+                <li> Try to give orders in the counter itself if store is filled with busy or in special days</li>
+                <li> Enjoy the services provided by the store and give feedbacks </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Creating a row for a whitespace -->
+    <div class="rows">
+        <div class="column" style="width: 100%; height: 10px;"> </div>
+    </div>
+
+    <!-- Creating a row -->
+    <div class="rows">
+
+        <!-- Creating a column -->
+        <div class="column" style="width: 100%; background-color: beige;"> 
+            <h2> Give Feedbacks and reviews </h2>
+
+            <!--  fill in the feedback here -->
+            <center><form> <!-- Creating a form -->
+                <!-- The form label -->
+                <label for="feedback"> Fill in the box providing your feedbacks </label>
+
+                <!-- Where the user can input text -->
+                <input type="text" id="feedback" name="concerns" style="width: 95%; height: 160px;">
+
+                <!-- A button to submit the form -->
+                <button type="button"> Submit </button>
+
+            </form></center>
+        </div>
+    </div>
+
+    <br>
+
+    <div class="rows">
+        <div class="column" style="background-color: bisque; width: 100%; height: 250px;"> 
+            <h2> Geolocation </h2>
+            <img src="background_image.jpg" style="height: 150px">
+            <button onclick="getLocation()"> Click to get your geolocation </button>
+            <p id="location"></p>
+        </div>
+    </div>
+</body>
+</html>

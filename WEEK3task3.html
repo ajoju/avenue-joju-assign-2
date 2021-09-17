@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS get set methods</title>
+    <style>
+        body
+        {
+            background-color: #5d8f87;
+        }
+    </style>
+</head>
+<body>
+    <!-- Declare the div before the script -->
+    <h1>Now The time details are given below: </h1>
+
+    <h3> The time in milliseconds since September 11, 2002 </h3>
+    <div id="getTime"></div>
+    <br>
+    
+    <h3> The year as a four digit number in yyyy </h3>
+    <div id="getFullYear"></div>
+    <br>
+    
+    <h3>The month as a number between 0-11 </h3>
+    <div id="getMonth"></div>
+    <br>
+
+    <h3> The day as a number between 1-31 </h3>
+    <div id="getDate"></div>
+    <br>
+
+    <h3> The hour between 0-23 </h3>
+    <div id="getHours"></div>
+    <br>
+
+    <h3> The minute between 0-59 </h3>
+    <div id="getMinutes"></div>        
+    <br>
+
+    <h3> The second between 0-59 </h3>
+    <div id="getSeconds"></div>
+    <br>
+
+    <script type="text/javascript"> 
+        var k = new Date();
+        document.getElementById("getTime").innerHTML = k.getTime(); // calling to get the time in milliseconds 
+        document.getElementById("getFullYear").innerHTML = k.getFullYear(); // calling to get the year as a four digit number 
+        document.getElementById("getMonth").innerHTML = k.getMonth(); // calling tog et the month as a number 
+        document.getElementById("getDate").innerHTML = k.getDate(); // calling to get the day as number
+        document.getElementById("getHours").innerHTML = k.getHours(); // calling to get the hour 
+        document.getElementById("getMinutes").innerHTML = k.getMinutes(); // calling to get the minute 
+        document.getElementById("getSeconds").innerHTML = k.getSeconds(); // calling to get the second
+    </script>
+</body>
+</html>
