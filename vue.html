@@ -1,0 +1,72 @@
+<!DOCTYPE html> 
+<html>
+    <head>
+        <title> </title>
+        <!-- Internal CSS -->
+        <style>
+            #app {
+                background-color: #5d8f87;
+                border-radius: 10px;
+                padding: 10px;
+                transition: all 0.2s;
+            }
+
+            li {
+                list-style: none;
+            }
+
+            del {
+                color: rgba(0, 0, 0,0.3);
+            }
+
+            h2 {
+                margin-left: 40px;
+            }
+        </style>
+
+        <!--  Vue link -->
+        <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <h2> To-do list  </h2>
+            <hr> 
+            <ol>
+                <li v-for="todo in todos">
+                    <label>
+                        <!-- Event listener and data binding -->
+                        <input type="checkbox" v-on:change="toggle(todo)" v-bind:checked="todo.done">
+                        
+                        <!-- Conditional rendering -->
+                        <del v-if="todo.done">
+                            {{ todo.text }}
+                        </del>
+                        <span v-else>
+                            {{ todo.text }}
+                        </span>
+                    </label>
+                </li>
+            </ol>
+
+            <script>
+                new Vue ({
+                    el: "#app", 
+                    data: { 
+                        // todos is an object
+                        todos: [
+                            { text: "SIT120 Assignment 1", done: false }, 
+                            { text: "SIT120 Assignment 2", done: true },
+                            { text: "SIT120 Assignment 3", done: false },
+                        ]},
+                    // methods property
+                    methods: {
+                        toggle: function(todo) { 
+                            todo.done = !todo.done
+                        }
+                    }
+                })
+            </script>
+
+        </div>
+    </body>
+</html>

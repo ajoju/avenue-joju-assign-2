@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burger Store</title>
+    <!-- Internal CSS -->
+    <link href="style.css" type="text/css" rel="stylesheet">
+    <!-- JavaScript -->
+    <script>
+        //  "Regular" alert
+        function Regular() {
+            alert("This is a regular page");
+        }
+
+        // "specialOffers" alert
+        function specialOffers() {
+            alert("This is a page of special offers");
+        }
+
+        // calculating the total price of the food items
+        function rate() {
+            var i = 0;
+            var sum = 0;
+            var rates = [];
+            var number;
+            number = prompt("How many chicken burgers?");
+            if (number > 0) {
+                do {
+                    rates[i] = prompt("Enter rate of item " + (i+1));
+                    sum = sum + parseInt(rates[i]);
+                    i++ 
+                } while (i < number);               
+
+                alert("The total price is " + sum );
+            }
+
+        }
+    </script>
+</head>
+<body>
+    <!--Page Title --> 
+    <h1> Burger Store </h1>
+
+    <!-- Setting the image at the header -->
+    <center><img src="background_image.jpg" style="height: 400px"></center>
+
+    <h2> Welcome everyone </h2>
+
+    <!-- Creating a div or box on the left side -->
+    <div class="rows">
+
+        <!-- The first column on the left -->
+        <div class="column left" style="background-color: green">
+            <h2> If you want to know todays date, please click here </h2>
+            <br>
+            <center><button type="button" onclick="document.getElementById('model').innerHTML = Date()"> Click here </button></center>
+            <p id="model"> </p>
+        </div>
+
+        <!-- The second column on the right -->
+        <div class="second">
+            <h2> Regular Schedule </h2>
+
+            <!-- Schedule timetable using a table -->
+            <table border="7"  align="center">
+                <tr> 
+                    <td> Monday </td>
+                    <td> Tuesday </td>
+                    <td> Wednesday </td>
+                    <td> Thursday </td>
+                    <td> Friday </td>
+                </tr>
+                <tr>
+                    <td onclick="Regular()"> 10:00 - 21:00 </td>
+                    <td onclick="Regular()"> 10:00 - 21:00 </td>
+                    <td onclick="Regular()"> 10:00 - 21:00 </td>
+                    <td onclick="specialOffers()"> 12:00 - 21:30 </td>
+                    <td style="background-color:yellow;"> </td>
+                </tr>
+                <tr>
+                    <td style="background-color: yellow;"></td>
+                    <td onclick="specialOffers()"> 12:00 - 14:50  </td>                   
+                    <td onclick="specialOffers()"> 15:00 - 17:00  </td>
+                    <td onclick="specialOffers()"> 14:00 - 16:00  </td>
+                    <td style="background-color: yellow"> </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- Creating a row for a whitespace -->
+    <div class="rows">
+        <div class="column" style="width: 100%; height: 10px;"> </div>
+    </div>
+
+    <!-- Creating a row -->
+    <div class="rows">
+
+        <!-- Creating a column -->
+        <div class="column" style="background-color: #8e605d; width: 100%; height: fit-content;">
+            <h2> Remember </h2>
+            <ul> <!-- Unordered list -->
+                <!-- The bulletpoints -->
+                <li> Dont take food items from outside inside the store </li>
+                <li> Try to give orders in the counter itself if store is filled with busy or in special days</li>
+                <li> Enjoy the services provided by the store and give feedbacks </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Creating a row for a whitespace -->
+    <div class="rows">
+        <div class="column" style="width: 100%; height: 10px;"> </div>
+    </div>
+
+    <!-- Creating a row -->
+    <div class="rows">
+
+        <!-- Creating a column -->
+        <div class="column" style="width: 100%; background-color: beige;"> 
+            <h2> Give Feedbacks and reviews </h2>
+
+            <!-- If you have concerns, fill in the form -->
+            <center><form> <!-- Creating a form -->
+                <!-- The form label -->
+                <label for="feedback"> Fill in the box providing your feedbacks </label>
+
+                <!-- Where the user can input text -->
+                <input type="text" id="feedback" name="concerns" style="width: 95%; height: 160px;">
+
+                <!-- A button to submit the form -->
+                <button type="button"> Submit </button>
+
+            </form></center>
+        </div>
+    </div>
+
+    <br>
+
+    <div> 
+        <h2> Calculate the average rate</h2>
+        <center><button onclick="rate()"> Press here to start! </button></center>
+        <a href="second.html">second page</a>
+    </div>
+</body>
+</html>
