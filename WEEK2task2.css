@@ -1,0 +1,125 @@
+
+        /* Importing the font */
+        @font-face {
+            font-family: Adolphus;
+            src: url(adolphus-serif.ttf);
+        }
+
+        /* Defining font for the whole page */
+        * {
+            font-family: Baskerville;
+        }
+
+        /*styling the class container which includes the whole body*/
+        .container{
+            background-color: #5d8f87;
+        }
+
+        /*styling the class ul under navigate*/
+        .navigate-ul {
+            position: fixed;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            top: 50px;
+        }
+
+        /*styling the class li under navigate*/
+        .navigate-li {
+            display: inline;
+            padding: 14px 30px;
+        }
+
+        /* styling when hovering on the link */
+        li a:hover {
+            color: white;
+        }
+
+        /* Styling the link */
+        a {
+            color: black;
+            text-decoration: none;
+        }
+
+        /*styling the class active*/
+        .active {
+            text-decoration: underline;
+        }
+
+        /* Styling the web name */
+        .Header{
+            font-family: Adolphus;
+            width: 421px;
+            height: 78px;
+            left: 60px;
+            top: 50px;
+            font-size: 60px;
+            line-height: 78px;
+        }
+
+        /*styling the class contents*/
+        .Contents {
+            height: 41px;
+            top: 80px;
+            font-size: 30px;
+            line-height: 39px;
+            text-align: center;
+            font-weight: normal;
+        }
+
+        /* Styling the boxes which includes the columns at the centre of the page/body */
+        .box {
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.5);
+            border: 2px solid #000000;
+            border-radius: 25px;
+            text-align: center;
+            font-size: 20px;
+            margin: auto;                
+        }
+
+        /* Styling the columns on tyhe centre of the page */
+        .column {
+            float: left;
+            width: 50%;
+            height: 500px;
+        }
+
+        /* Styling the row */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        /*styling h1 and h2*/
+        h1, h2 {
+            font-weight: normal;
+        }
+
+        /*styling the contact class*/
+        .contact {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .contact-font {
+            font-weight: bold;
+        }
+
+        /* Order button */
+        .order {
+            position: absolute;
+            text-align: center;
+            width: 200px;
+            height: 50px;
+            background: #D1EDED;
+            border: 2px solid #000000;
+            border-radius: 25px;
+            font-size: 35px;
+            line-height: 50px;
+            margin: 0;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
