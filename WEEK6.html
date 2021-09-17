@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <!--Internal CSS-->
+    <style>
+
+        /* Styling the whole body */
+        body{
+            background-color: #5d8f87;            
+        }
+
+    </style>
+
+    <!--Vue link-->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"> </script>
+</head>
+<body>
+    
+    <h1> Task 1: Using V-model for handling user inputs </h1>
+        
+    <!-- Form creation -->
+    <form id="form">
+        <!-- Form heading -->
+        <h2> Form User </h2> 
+
+        <!-- providing prompt for user to enter name -->
+        <label for="name"> Name: {{ name }} </label> <br>
+        <!--space to type their name-->
+        <input id="name" type="text" placeholder="Jane Doe" v-model="name"> 
+        
+        <br><br>
+        
+        <!-- providing prompt for user to enter password -->
+        <label for="password"> Password: </label> <br>
+        <!--space to type their password-->
+        <input id="password" type="password" placeholder="Must have at least 8 characters" v-model="password">
+        
+        <br><br>
+        
+       <!-- providing prompt for user to enter email -->
+        <label for="email"> Email: </label> <br>
+         <!--space to type their email-->
+        <input id="email" type="email" placeholder="avenuejoju@gmail.com" v-model="email">
+        <br><br>
+
+        <!-- Submit button -->
+        <button v-on:click="checkInput"> Submit </button>
+    </form>
+
+    <!-- JavaScript -->
+    <script>
+        // Using v-model directive
+        var form = new Vue ({
+            el: "#form", // element
+            data: {
+                name: '',
+                password: '',
+                email: ''
+            },
+            methods: {
+                // Function to check the user's inputs
+                checkInput: function() { 
+                    var stri='';
+                    if (this.name) {
+                        // concatenating 
+                        stri = stri + "Name: " + this.name; 
+                    }
+                    if (this.password) {
+                        stri = stri + " Password: " + this.password; 
+                    }
+                    if (this.email) {
+                        stri = stri + " Email: " + this.email; 
+                    }
+                    if (stri) { 
+                        // Alert the user with their inputs 
+                        alert(stri)
+                    } else {
+                        // If their inputs are not complete, alert this instead
+                        alert("Please fill in the required information")
+                    }
+                }
+            }
+        })
+    </script>
+
+    <hr> 
+
+    <!--Next heading-->
+    <h1> Task 2: Checkbox in your project </h1>
+
+    <!-- binding multiple value using array -->
+    <div id="multiplechecks">
+        <h2> Food list </h2>
+
+        <!-- Checkbox options -->
+        <input type="checkbox" id="chicken" value="" v-model="foodList">
+        <label for="chicken"> Chicken </label>
+        <br>
+        <input type="checkbox" id="meat" value="Meat" v-model="foodList">
+        <label for="meat"> Meat </label>
+        <br>
+        <input type="checkbox" id="fish" value="fish" v-model="foodList">
+        <label for="fish"> Fish</label>
+        <br>
+        <input type="checkbox" id="veg" value="veg" v-model="foodList">
+        <label for="veg"> Veg </label>
+        <br><br>
+
+        <!-- Two-way binding -->
+        <span> These are added to your cart: {{ foodList }} </span>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        new Vue ({
+            el: '#multiplechecks',
+            data: {
+                foodList: [] // array (currently empty)
+            }
+        })
+    </script>
+
+    <hr>
+
+    <!-- Next heading-->
+    <h1> Task 3: Dynamic options rendering v-for </h1>
+    <h2> Select month </h2>
+    <div id="dynamic"> 
+        <select v-model="selected">
+            <!--  options -->
+            <option v-for="option in months" v-bind:value="option.value">
+                {{ option.text }}
+            </option>
+        </select>
+        <br><br>
+
+        <!-- Two-way binding -->
+        <span> Selected: {{ selected }} </span>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        new Vue ({
+            el: '#dynamic',
+            data: {
+                // by default, this option is shown
+                selected: 'January', 
+                months: [
+                    { text: '1', value: 'January'},
+                    { text: '2', value: 'February'},
+                    { text: '3', value: 'March'},
+                    { text: '4', value: 'April'},
+                    { text: '5', value: 'May'},
+                    { text: '6', value: 'June'},
+                    { text: '7', value: 'July'},
+                    { text: '8', value: 'August'},
+                    { text: '9', value: 'September'},
+                    { text: '10', value: 'October'},
+                    { text: '11', value: 'November'},
+                    { text: '12', value: 'December'}
+                ]
+            }
+        })
+    </script>
+
+    <hr> 
+
+    <!-- Next Heading -->
+    <h1> Task 4: Using Modifiers in your project </h1>
+    <form id="task4">
+        <!-- Simple Modifiers-->
+        <h2> Simple Modifiers </h2>
+
+        <!-- Giving prompt for user to enter the input -->
+        <label for="simple"> Type something simply below </label> <br>
+        
+        <!-- Where the user type in their input -->
+        <input id="simple" type="text" v-model.lazy="simple">
+        
+        <!-- Clickable button to call the checkInput method -->
+        <button v-on:click="checkInput"> Submit </button>
+        
+
+        <!-- Trim -->
+        <h2> Trim </h2>
+        
+        <!-- Giving prompt for user to enter input -->
+        <label for="trim"> Type something you like below 
+            <br>
+            Text: {{ trim }}
+        </label> <br>
+        
+        <!--spzace for the user to type in their input -->
+        <input id="trims" type="text" v-model.trim="trims">
+        
+        <!-- Clickable button to call the checkInput method -->
+        <button v-on:click="checkInput"> Submit </button>
+
+
+        <!-- Automatic Typecasting -->
+        <h2> Automatic Typecasting (as a number) </h2>
+        
+        <!-- giving prompt for user to enter input -->
+        <label for="age"> Type your age below 
+            <br>
+            Age: {{ age }}
+        </label> <br>
+        
+        <!-- Where the user type in their input -->
+        <input id="age" type="number" v-model.number="age">
+        
+        <!-- Clickable button to call the checkInput method-->
+        <button v-on:click="checkInput"> Submit </button>
+    </form>
+    
+    <!-- JavaScript -->
+    <script>
+        var task4 = new Vue ({
+            el: "#task4",
+            data: {
+                simple: '',
+                trims: '',
+                age: ''
+            },
+            methods: {
+                 // Function to check the user input 
+                checkInput: function() {
+                    var stri='';
+                    // concatenating
+                    if (this.simple) {
+                        stri = stri + "Text: " + this.simple; 
+                    }
+                    if (this.trims) {
+                        stri = stri + "Text: " + this.trims; 
+                    }
+                    if (this.age) {
+                        stri = stri + "Age: " + this.age;  
+                    }
+                    if (stri) { 
+                        // Alert the user with their inputs
+                        alert(stri)
+                    } else { 
+                        // Giving alerts if it is incomplete
+                        alert("Please input something.")
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>
