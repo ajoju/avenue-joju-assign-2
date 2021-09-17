@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        /* Styling the whole body */
+        body{
+            background-color: #5d8f87;            
+        }
+
+    </style>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"> </script>
+    
+</head>
+<body>
+    
+    <h1> Task 1: Learn Composing with Components </h1>
+    <div id="activity1"> 
+        <h2 v-bind:title = "message"> {{ message }} </h2>
+        <ol>
+            <!--  Assigning a "key" to each component. -->
+            <task-list v-for="list in todos" v-bind:task="list" v-bind:key="list.key"> </task-list>
+        </ol>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        
+        // Defining a new component 
+        Vue.component('task-list', {
+            // The task-list component accepts a "props" (similar to a custom attribute)
+            props: ['task'], // The prop is called task
+            template: '<li> {{ task.item }} </li>'
+        })
+
+        var Task1 = new Vue({
+            el: "#activity1",
+            data: {
+                message: "Tasks of week 5",
+                todos: [
+                    {key:1, item:"Learn Composing with Components"},
+                    {key:2, item:"HTML"},
+                    {key:3, item:"CSS"},
+                    {key:4, item:"JavaScript"},
+                ]
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <style>
+
+        /* Styling the whole body */
+        body{
+            background-color: #5d8f87;            
+        }
+
+    </style>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"> </script>
+</head>
+<body>
+    <!--heading of the page-->
+    <h1> Task 3: Understanding Handling User Input </h1>
+    <div id="activity3">
+
+        <!-- space to enter the new list to add -->
+        <input v-model="newlist"> 
+
+        <!--Button to perform the addlist function -->
+        <button v-on:click="addlist">if you want to add any other food items to your order list, add it here</button>
+        
+        <span v-if="seen">
+            <ul>
+                <li v-for="list in foodlist"> {{ list.name }} </li>
+            </ul>
+        </span>
+    </div>
+
+    <!-- Javascript -->
+    <script>
+        
+        var Task3 = new Vue({
+            el: "#activity3",
+            data: {
+                seen: true,
+                foodlist: [
+                    {name: "Alfaam"},
+                    {name: "Shawarma"},
+                    {name: "Pastries"},
+                ]
+            },
+            methods: {
+                addlist: function(newlist) { // Method to add list
+                    var value = this.newlist // Declaring a variable and Storing the "new list" entered in it
+                    this.foodlist.push({ 
+                        name: value // Adds the variable to the foodlist data
+                    })
+                    this.newlist = '';
+                }
+            }
+        })
+    </script>
+</body>
+</html>

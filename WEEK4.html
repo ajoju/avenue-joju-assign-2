@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Week4</title>
+
+    <style>
+
+        /* Styling the whole body */
+        body{
+            background-color: #5d8f87;            
+        }
+
+    </style>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+</head>
+<body>
+    <!-- Activity 1: Declarative rendering-->
+    <h1> Task 1: Declarative rendering (using curly braces) </h1>
+        
+    <!-- As the data and the DOM are linked, everything is now reactive. -->
+    <div id="activity1">
+        <!-- If we  test a \value, it will be updated and display something differently. -->
+        {{ message1 }}
+        <br>
+        {{ test }}
+        <br>
+
+        <!-- V-bind attribute: keeping this element’s title attribute up-to-date using Vue -->
+        <span v-bind:title="message2">To see this page, please hover the mouse over me </span>
+        <br>
+        <a v-bind:href="link"> You can access the store's website by clicking in the link</a>
+        <p> or </p>
+        <a v-bind:href="link"> {{ link }} </a>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        var task1 = new Vue({
+            el: '#activity1', // el stands for elements
+            data: {
+                message1: 'hai!',
+                test: 'My name is Avenue.',
+                message2: 'You have loaded this page on ' + new Date().toLocaleString(),
+                link: 'https://www.umamiburger.com/'
+            }
+        })
+    </script>
+
+    <hr>
+
+    <!-- Task 2: Conditionals and Loops -->
+    <h1> Task 2: Conditionals and Loops </h1>
+    <div id="activity2">
+
+        <!-- If the seen is true, it will display as below -->
+        <span v-if="seen"> 
+            You have ordered : 
+            <p> Below are your items you have ordered </p>
+            <ol>
+                <!-- to display list of items using the data from an array -->
+                <li v-for="unit in units">
+                {{ unit.text }}
+                </li>
+            </ol>
+        </span>
+
+        <!-- Else, if the seen is false, it will display as below -->
+        <span v-else="seen">
+            You have not ordered anything. 
+        </span>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        var items = new Vue({
+            el: '#activity2',
+            data: {
+                seen: true,
+                units: [ // array 
+                    { text: 'burger' },
+                    { text: 'alfaam' },
+                    { text: 'shawarma' },
+                    { text: 'beef curry' }
+                ]
+            }
+        })
+    </script>
+</body>
+</html>
